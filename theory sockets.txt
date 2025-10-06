@@ -1,0 +1,30 @@
+﻿Sockets are one of the core components used by the program to access the network to communicate with 
+other processes/nodes over the network. 
+It is simply a combination of an IP address and a port number that acts as an endpoint for Communication.
+Example: 192.168.1.1:8080, where the two parts separated by the colon represent the IP address( 192.168.1.1 ) 
+and the port number( 8080 ).
+
+Socket Types:
+
+TCP Socket (Stream Socket): Provides reliable, connection-based communication (i.e., TCP protocol).
+UDP Socket (Datagram Socket): Provides connectionless communication, faster but unreliable (i.e., UDP protocol).
+________________________________________________________________________________________
+Сокети є одними з основних компонентів, які використовуються програмою для доступу до мережі для спілкування з іншими процесами/вузлами через мережу.
+Це просто комбінація IP-адреси та номера порту, яка виступає в якості кінцевої точки для зв’язку.
+Приклад: 192.168.1.1:8080
+
+Типи сокетів:
+TCP-сокет (потоковий сокет): забезпечує надійне, орієнтоване на з’єднання спілкування (тобто протокол TCP).
+UDP-сокет (датаграмний сокет): забезпечує безз’єднувальне спілкування, швидше, але ненадійне (тобто протокол UDP).
+________________________________________________________________________________________
+
+Сокет — це “точка зв’язку” між двома програмами через мережу.
+Можеш уявити його як трубку або дріт, через який дані передаються між комп’ютерами або між програмами на одному комп’ютері.
+
+Програма створює сокет, щоб надіслати або отримати повідомлення.
+Сокет завжди прив’язаний до:
+	IP-адреси — який комп’ютер у мережі.
+	Порту — через який (як “двері” до  цього комп’ютера) спілкуємося.
+
+Схема: 
+	[Клієнтська програма] ---(сокет)---> [Серверна програма]
