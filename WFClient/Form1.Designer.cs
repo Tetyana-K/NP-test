@@ -79,6 +79,7 @@
             tbName.Size = new Size(190, 23);
             tbName.TabIndex = 4;
             tbName.Text = "name";
+            tbName.TextChanged += tbName_TextChanged;
             // 
             // tbInfo
             // 

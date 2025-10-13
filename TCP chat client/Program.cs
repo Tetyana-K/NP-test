@@ -15,7 +15,7 @@ class TcpChatClient
 
         // потік для прийому повідомлень
         Thread receiveThread = new Thread(() =>
-        {
+        {                                                         
             byte[] buffer = new byte[1024];
             while (true)
             {

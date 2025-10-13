@@ -10,11 +10,12 @@ namespace WFServer
         {
             InitializeComponent();
         }
-
+        TcpListener listener;
         private async void Form1_LoadAsync(object sender, EventArgs e)
         {
             
-            TcpListener listener = new TcpListener(IPAddress.Any, 5001);
+            //TcpListener
+            listener = new TcpListener(IPAddress.Any, 5001);
             listener.Start(); // запускаємо сервер
             AppendLog("Сервер слухає...");
 
@@ -29,7 +30,7 @@ namespace WFServer
         async Task HandleClientAsync(TcpClient client)
         {
             IPEndPoint? remote = client.Client.RemoteEndPoint as IPEndPoint; // отримуємо IP-адресу і порт клієнта
-           AppendLog( $"Клієнт {remote?.Address}:{remote?.Port} підключився");
+            AppendLog( $"Клієнт {remote?.Address}:{remote?.Port} підключився");
 
             using NetworkStream stream = client.GetStream(); // отримуємо потік для обміну даними
             byte[] buffer = new byte[1024]; // буфер для зберігання отриманих даних
@@ -76,12 +77,11 @@ namespace WFServer
         {
             if (tbLog.InvokeRequired)
             {
-                tbLog.Invoke(new Action(() => tbLog.AppendText($"{text}\r\n")));
+                tbLog.Invoke(new Action(() => tbLog.AppendText($"{text}\r\n"))); // Environment.NewLine
             }
             else
             {
                 tbLog.AppendText($"{text}{Environment.NewLine}");
-
             }
         }
     }

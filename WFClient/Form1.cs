@@ -9,7 +9,7 @@ namespace WFClient
         {
             InitializeComponent();
             this.tbInfo.Multiline = true;
-            tbInfo.ScrollBars = ScrollBars.Both;  
+            tbInfo.ScrollBars = ScrollBars.Both;
         }
         private TcpClient client;
         private NetworkStream stream;
@@ -29,7 +29,7 @@ namespace WFClient
                 stream = client.GetStream(); // отримуємо потік для обміну даними
 
                 // Надсилаємо повідомлення серверу
-                string message = $"Привіт від {name}, асинхронний сервере!";
+                string message = $"Привіт від {name}! {tbMessage.Text}";
                 byte[] data = Encoding.UTF8.GetBytes(message);
                 await stream.WriteAsync(data, 0, data.Length); //асинхронно пишемо дані в потік
                 AppendLog($"[{DateTime.Now}] Надіслано: {message}\n");
@@ -52,19 +52,24 @@ namespace WFClient
 
         private void button2_Click(object sender, EventArgs e) // diconnect
         {
-            if(stream != null)
+            //if (stream != null)
             {
-                stream.Close();
+                stream?.Close();
             }
-            if (client!=null)
+            //if (client != null)
             {
-                client.Close();
+                client?.Close();
             }
             AppendLog("Відключено від сервера.\n");
         }
         private void AppendLog(string text)
         {
             tbInfo.AppendText($"{text}\r\n");
+        }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

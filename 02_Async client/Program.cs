@@ -17,13 +17,13 @@ class AsyncClient
 
         using NetworkStream stream = client.GetStream(); // отримуємо потік для обміну даними
 
-        // Надсилаємо повідомлення серверу
+        // формуємо повідомлення серверу
         string message = $"Привіт від {name}, асинхронний сервере!";
         byte[] data = Encoding.UTF8.GetBytes(message);
-        await stream.WriteAsync(data, 0, data.Length); //асинхронно пишемо дані в потік
+        await stream.WriteAsync(data, 0, data.Length); //асинхронно пишемо дані (повідомлення серверу) в потік
         Console.WriteLine($"[{DateTime.Now}] Надіслано: {message}");
 
-        // Читаємо відповідь асинхронно
+        // читаємо відповідь асинхронно
         byte[] buffer = new byte[1024];
         int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
         string reply = Encoding.UTF8.GetString(buffer, 0, bytesRead);

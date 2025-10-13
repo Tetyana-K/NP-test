@@ -14,10 +14,11 @@ class AsyncServer
         listener.Start(); // запускаємо сервер
         Console.WriteLine("Сервер слухає...");
 
-        while (true)
+        while (true) //  цикл прийому клієнтів
         {
-            TcpClient client = await listener.AcceptTcpClientAsync(); // асинхронно очікуємо підключення клієнта
-            _ = Task.Run(() => HandleClientAsync(client)); // обробляємо клієнта в окремому завданні (паралельно), тут _ означає, що ми не збираємося використовувати результат Task
+            TcpClient client = await listener.AcceptTcpClientAsync(); // асинхронно очікуємо підключення нового клієнта
+            _ = Task.Run(() => HandleClientAsync(client)); // обробляємо клієнта в окремому завданні (паралельно), щоб сервер міг приймати інших одночасно,
+                                                           // тут _ означає, що ми не збираємося використовувати результат Task
         }
     }
 
@@ -38,9 +39,9 @@ class AsyncServer
         //byte[] replyBytes = Encoding.UTF8.GetBytes(reply); 
         //await stream.WriteAsync(replyBytes, 0, replyBytes.Length);
 
-
         try
         {
+            // 
             while (true)
             {
                 int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
@@ -48,27 +49,26 @@ class AsyncServer
                 {
                     // клієнт закрив з'єднання
                     Console.WriteLine($"Клієнт {remote?.Address}:{remote?.Port} відключився");
-                    break;
+                    break; // вихід з циклу
                 }
 
                 string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                 Console.WriteLine($"Від {remote?.Address}: {message}");
 
-                string reply = "Привіт, асинхронний клієнте!";
+                // формуємо відповідь
+                string reply = "Привіт, асинхронний клієнт!";
                 byte[] replyBytes = Encoding.UTF8.GetBytes(reply);
-                await stream.WriteAsync(replyBytes, 0, replyBytes.Length);
+                await stream.WriteAsync(replyBytes, 0, replyBytes.Length); // відправляємо відповідь клієнту
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Помилка з клієнтом {remote.Address}:{remote.Port}: {ex.Message}");
+            Console.WriteLine($"Помилка з клієнтом {remote?.Address}:{remote?.Port}: {ex.Message}");
         }
         finally
         {
             client.Close();
         }
-
-        client.Close();
     }
 }
 
