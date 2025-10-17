@@ -10,7 +10,7 @@ class MulticastClient
     static void Main()
     {
         // Логічна підписка клієнта: які типи повідомлень він хоче отримувати
-       List<string> subscriptions = ["news", "weather"];
+       List<string> subscriptions = ["alert", "weather"];
 
         // Всі доступні Multicast-групи
         List<MulticastGroup> groups = 
@@ -25,10 +25,10 @@ class MulticastClient
 
         for (int i = 0; i < subscriptions.Count; i++)
         {
-            string type = subscriptions[i];
+            string type = subscriptions[i]; // alert
 
             // Знаходимо групу, яка відповідає потрібному типу
-            var group = groups.First(g => g.Type == type);
+            var group = groups.First(g => g.Type == type); // group
 
             // Створюємо UDP-сокет
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
