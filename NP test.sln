@@ -156,6 +156,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FTP", "FTP", "{3D07A975-5DE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-SFTP", "01-SFTP\01-SFTP.csproj", "{3DE2677F-653B-4727-9B66-F230EBF289DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WF OpenDialog", "WF OpenDialog\WF OpenDialog.csproj", "{4AF065C7-6C08-4DD9-8842-F0FE8C615298}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -374,6 +376,10 @@ Global
 		{3DE2677F-653B-4727-9B66-F230EBF289DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DE2677F-653B-4727-9B66-F230EBF289DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DE2677F-653B-4727-9B66-F230EBF289DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AF065C7-6C08-4DD9-8842-F0FE8C615298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AF065C7-6C08-4DD9-8842-F0FE8C615298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AF065C7-6C08-4DD9-8842-F0FE8C615298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AF065C7-6C08-4DD9-8842-F0FE8C615298}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
