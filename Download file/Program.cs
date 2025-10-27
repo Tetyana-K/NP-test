@@ -14,8 +14,10 @@ class Program
     private static void DownloadFileByWebClient()
     {
         //string imageUrl = "https://www.gutenberg.org/cache/epub/43/pg43.cover.medium.jpg";
-        string imageUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20250705152348042640/Request-and-Response-Cycle.webp";
-        string fileName = "../../../http_request.jpg";
+        //string imageUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20250705152348042640/Request-and-Response-Cycle.webp";
+        string imageUrl = "https://www.gutenberg.org/files/1524/1524-0.txt";
+        //string imageUrl = "https://media.geeksforgeeks.org/wp-content/uploads/20250705152348042640/Request-and-Response-Cycle.webp";
+        string fileName = "../../../hamlet.txt";
 
         using WebClient client = new WebClient(); // obsolete in .NET 6.0 and later
         client.DownloadFile(imageUrl, fileName);
